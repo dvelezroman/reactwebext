@@ -1,15 +1,33 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"manifest_version": 2,
+
+	"name": "Image Analizer",
+	"description": "This extension is an analizer for images web pages",
+	"version": "1.0.0",
+	"browser_action": {
+		"default_popup": "index.html",
+		"default_title": "Image Analyzer"
+	},
+	"icons": {
+		"16": "icons/icon16.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png"
+	},
+	"permissions": [
+		"webRequest",
+		"<all_urls>",
+		"tabs",
+		"activeTab",
+		"contextMenus"
+	],
+	"background": {
+		"scripts": ["app/background.js"]
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["app/main.js"],
+			"run_at": "document_start"
+		}
+	]
 }
