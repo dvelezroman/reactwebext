@@ -19,7 +19,7 @@ export default class TrafficContainer extends Component {
 		return (
 			<div>
 				<li>
-					<ul>{this.renderResponse(this.props.response)}</ul>
+					<ul>{this.renderResponse(this.props.token)}</ul>
 				</li>
 				{/* <div>{this.props.images.length}</div> */}
 				<div>
