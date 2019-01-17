@@ -74,7 +74,7 @@ class App extends Component {
 				}
 				time = Date.now();
 			}
-			let audioFile = await this.text2Speech(token).then(res => res.body);
+			let audioFile = await this.text2Speech(token).then(res => res.body); // aqui recibo el audio file tipo blob debo configurarlo
 			this.setState({ token: token, time: time, audioFile: audioFile });
 		}
 	};
@@ -127,13 +127,7 @@ class App extends Component {
 			};
 			audio.play();
 		};
-		xhr.send();
-
-		// return axios.post(
-		// 	"https://eastus.tts.speech.microsoft.com/cognitiveservices/v1",
-		// 	xmlString,
-		// 	{ headers: headers }
-		// );
+		xhr.send(xmlString);
 	};
 
 	componentDidMount() {
@@ -161,12 +155,12 @@ class App extends Component {
 				</div>
 				<div className="App-images">
 					<p className="App-Intro">
-						<VerProps
+						{/* <VerProps
 							playing={this.state.playing}
 							time={this.state.time}
 							audioFile={true}
-						/>
-						<ImageAnalizer resultToSpeak={this.state.resultToSpeak} />
+						/> */}
+						{/* <ImageAnalizer resultToSpeak={this.state.resultToSpeak} /> */}
 						<ImagesContainer
 							images={this.state.images}
 							analizeImage={this.analizeImage}
